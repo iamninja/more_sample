@@ -3,33 +3,42 @@ require 'spec_helper'
 describe "Static pages" do
   subject { page }
 
+  shared_examples_for "all static pages" do
+    it { should have_selector('h1', text: heading) }
+    it { should have_title(page_title) }
+  end
+
   describe "Home page" do
     before {visit root_path}
+    let(:heading)    { 'Yada App' }
+    let(:page_title) { 'Yada App' }
 
-    it { should have_content('Yada App') }
-    it { should have_title('Yada App') }
+    it_should_behave_like "all static pages"
     it { should_not have_title('- Home') }
   end
 
   describe "Help page" do
     before {visit help_path}
+    let(:heading)    { 'Help' }
+    let(:page_title) { 'Yada - Help' }
 
-    it { should have_content('Help') }
-    it { should have_title('Yada App - Help') }
+    it_should_behave_like "all static pages"
   end
 
   describe "About page" do
     before { visit about_path }
+    let(:heading)    { 'About us' }
+    let(:page_title) { 'Yada App - About' }
 
-    it { should have_content('About Us') }
-    it { should have_title('Yada App - About') }
+    it_should_behave_like "all static pages"
   end
 
   describe "Contact page" do
     before { visit contact_path }
+    let(:heading)    { 'Contact' }
+    let(:page_title) { 'Yada App - Contact' }
 
-    it { should have_content('Contact') }
-    it { should have_title('Yada App - Contact') }
+    it_should_behave_like "all static pages"  
   end
 
   it "should have the right links on the layout" do
