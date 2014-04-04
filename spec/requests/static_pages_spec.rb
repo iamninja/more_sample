@@ -20,14 +20,14 @@ describe "Static pages" do
   describe "Help page" do
     before {visit help_path}
     let(:heading)    { 'Help' }
-    let(:page_title) { 'Yada - Help' }
+    let(:page_title) { 'Yada App - Help' }
 
     it_should_behave_like "all static pages"
   end
 
   describe "About page" do
     before { visit about_path }
-    let(:heading)    { 'About us' }
+    let(:heading)    { 'About Us' }
     let(:page_title) { 'Yada App - About' }
 
     it_should_behave_like "all static pages"
